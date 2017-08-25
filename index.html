@@ -3,8 +3,8 @@
   <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
-  <title>wxid二维码名片在线生成</title>
-  <meta name="keywords" content="wxid二维码名片在线生成" />
+  <title>wxid加好友</title>
+  <meta name="keywords" content="wxid推送会话框" />
   <meta name="description" contents="专业WXID加好友,微信好友恢复,加qq1511134675,采取最新技术,调用第三方接口获取wxid信息,保证恢复微信好友成功!" />
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v1.0.0" />
   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -15,12 +15,12 @@
       
       <div class="container-fluid fashion center">
 
-          <p style="margin-top:10px;font-weight:bold;">欢迎使用wxid自助生成二维码名片</p>
-          <p style="position:relative;left:80px;" class="small">----------如果我们帮到了您，还请捐助我们，谢谢！</p>
+          <p style="margin-top:10px;font-weight:bold;">wxid可以做什么？</p>
+          <p style="position:relative;left:80px;" class="small">----------加好友，查微信号，推送会话框，查手机号！</p>
 
       </div>
 
-      <p class="text-success" style="margin-top:10px;">捐赠的亲，请微信扫描如下二维码捐赠，谢谢!</p>
+      <p class="text-success" style="margin-top:10px;">需要的请加黑客qq，1511134675</p>
 
       <div>
         
@@ -29,53 +29,8 @@
       </div>
 
       <div class="container-fluid fashion">
-          <h4>请输入wxid，如wxid_***,不要留有任何空白或空格，请确保wxid正确无误，点击生成二维码名片之后，安卓手机微信扫一扫即可识别出对方通讯录，加对方好友就好了。如果长久未见对方加您，可以扫描上方二维码，支付100元，并附言阁下qq号，我们将会主动联系您解决问题。金额不是100，或者无qq，我们都不会联系您，qq一般不会回复，请见谅！</h4>
+          <h4>扫描上方二维码，付款20元，留言阁下qq号，即可优先得到第一回复，一般在线时间是晚上20:00-24:00，周日全天，注意，此种方式操作，无论操作多么复杂，都统一收费100，也即处理后无误，只需付余款80即可！</h4>
       </div>
-
-      <p class="text-success" style="margin-top:10px;">
-      在下方输入wxid开始生成名片:
-      </p>
-
-      <input type="text" class="form-control" name="wxid" placeholder="请输入wxid_***">
-
-      <button class="btn btn-primary" style="margin-top:10px;" onclick="makeNameCard();">点击生成名片</button>
-
-      <hr />
-
-      <div class="container-fluid">
-        
-          <p style="margin-top:5px;" class="text-success">图形生成区:</p>
-
-          <div id="qrcode" style="width:200px;height:200px;border:dashed 1px black;">
-
-          </div>
-
-      <div>
-
-      <script>
-
-        var qrcode = new QRCode(document.getElementById("qrcode"),"weixin://contacts/profile/wxid_***");
-
-        qrcode.clear();
-
-        function makeNameCard(){
-
-            var wxid = document.querySelector("input[name=wxid]").value;
-
-            if(wxid == "" || wxid == null || wxid.replace(/\s+/gi,"") == ""){
-
-                alert("请输入wxid！");
-                return false;
-
-            }
-
-            qrcode.clear();
-
-            qrcode.makeCode("weixin://contacts/profile/"+wxid);
-
-        }
-
-      </script>
     
   </body>
 </html>
