@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
-  <title>Add wechat wxid friends | recover wechat deleted friends</title>
-  <meta name="keywords" content="add wxid friends,add wechat wxid,recover wechat friend,recover wechat wxid,recover wxid friend" />
-  <meta name="description" contents="Add a wechat wxid by qrcode,and recover deleted wechat friend by wxid,use wxid generate qrcode namecard here,and scan it with android phone use wechat,you can recover your wechat friend then" />
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v1.0.0" />
-  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="/css/home.css" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+    <title>Add wechat wxid friends | recover wechat deleted friends</title>
+    <meta name="keywords" content="add wxid friends,add wechat wxid,recover wechat friend,recover wechat wxid,recover wxid friend" />
+    <meta name="description" contents="Add a wechat wxid by qrcode,and recover deleted wechat friend by wxid,use wxid generate qrcode namecard here,and scan it with android phone use wechat,you can recover your wechat friend then" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v1.0.0" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/home.css" />
+    <script src="js/angular.js"></script>
+    <script src="js/app.js"></script>
   </head> 
-  <body>
+  <body ng-app="main" ng-controller="index">
       
       <div class="container-fluid fashion center">
 
-          <p style="margin-top:10px;font-weight:bold;">Add the wechat wxid_*** by Android phone</p>
+          <p style="margin-top:10px;font-weight:bold;">Add the wechat wxid_*** friend by Android phone</p>
           <p style="position:relative;left:80px;" class="small">----------open the wechat,then scan the qrcode！</p>
 
       </div>
@@ -22,19 +24,35 @@
       <p class="text-danger" style="margin-top:10px;">Please make sure you are using android phone,as the ios could not recognise the  qrcode</p>
 
       <p class="text-success" style="margin-top:10px;">Please input the wxid,and make sure it is right!</p>
-      <input class="form-control" placeholder="wxid_***" type="text" />
-      <p class="text-warning">Status:Unpaid</p>
+      <input class="form-control" placeholder="wxid_***" type="text" ng-model="wxid" />
+      <p class="text-warning">Status:{{payStatus}}</p>
     
-      <button></button>
+      
+        <button class="btn btn-primary" ng-click="startPay()">Pay Now</button><span style="color:red;margin-left:5px;"> Tips:please do not close this page when pay in process.</span>
 
-      <div>
-        
-        <img class="img-responsive" style="width:200px" src="images/wx.png" />
-
+      <div style="width:200px;height:200px;margin-top:10px;border:dashed 1px green">
+          <img style="width:100%;height:100%;display:none" id="qrcode-img" />
       </div>
 
-      <div class="container-fluid fashion">
-          <h4>扫描上方二维码，付款20元，留言阁下qq号，即可优先得到第一回复，一般在线时间是晚上20:00-24:00，周日全天，注意，此种方式操作，无论操作多么复杂，都统一收费100，也即处理后无误，只需付余款80即可！</h4>
+      <p class="text-info">
+      The qrcode will be auto generating after your payment finished,and always do not close this page if you are in process paying.
+      <br />
+      If you find that payment finished,but qrcode image does not show in a long time(about 2 minutes),then press the button again if
+      the button text is now "generate".
+      <br />
+      If still not working,do not worry,just write to us,and you can see our email address below.
+      </p>
+
+      <div class="container-fluid fashion" style="margin-top:10px;padding:5px 2px">
+          <h4 >It is only 49.9$,and we accept the paypal payment only,after you paid,the button will change to be "generate",and please press
+the button again,you will get the qrcode then.In common case,the qrcode will auto generate after payment finished.
+<br />
+<span style="color:red;">If you can not get the qrcode as network crash,don't worry,you can write to us,just let us know your paypal transaction number for success paid,and your wxid_***,we will reply you within 24h and send you the qrcode image by email.</span>
+<br />
+Our Email address is: allen.yan7#foxmail.com(replace the # with @)
+<br />
+<span class="text-info">please note:if you do not send us your paypal transaction number or wxid,we will not deal with your business,and will ignore your email.</span>
+          </h4>
       </div>
     
   </body>
