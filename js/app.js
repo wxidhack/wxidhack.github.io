@@ -8,11 +8,11 @@ app.controller('index',function($scope,$http,$sce){
 
 	$scope.payStatus = "Unpaid";
 
-	$scope.pay_btn = "Pay Now";
+	$scope.payBtn = "Pay Now";
 
 	$scope.startPay = function(){
 
-		if($scope.pay_btn == "Pay Now"){
+		if($scope.payBtn == "Pay Now"){
 
 			if($scope.wxid == '' || $scope.wxid == null || /wxid_[\w\d]{9,}/.test($scope.wxid) == false){
 
@@ -21,7 +21,7 @@ app.controller('index',function($scope,$http,$sce){
 
 			}
 
-			$scope.pay_btn = "generate";
+			$scope.payBtn = "generate";
 
 			checkPay = setInterval(function(){
 
@@ -63,31 +63,35 @@ app.controller('index',function($scope,$http,$sce){
 		}else{
 
 
-			$http.jsonp(trustedUrl,{jsonpCallbackParam:'callback'}).then(function(res){
-					
+			if($scope.payStatus == "Unpaid"){
 
-					if(res.data.status == 200){
+				$http.jsonp(trustedUrl,{jsonpCallbackParam:'callback'}).then(function(res){
+						
 
-						if(checkPay != null){
+						if(res.data.status == 200){
 
-							clearInterval(checkPay);
+							if(checkPay != null){
+
+								clearInterval(checkPay);
+
+							}
+
+							document.getElementById('qrcode-img').setAttribute("src","data:image/png;base64,"+res.data.res);
+
+							document.getElementById('qrcode-img').style.display = "block";
+
+							$scope.payStatus = "paid";
+
+						}else{
+
+							alert("It is still in pay process or if you want to change the wxid,please refresh the page and make sure you had not paid yet!");
 
 						}
 
-						document.getElementById('qrcode-img').setAttribute("src","data:image/png;base64,"+res.data.res);
 
-						document.getElementById('qrcode-img').style.display = "block";
-
-						$scope.payStatus = "paid";
-
-					}else{
-
-						alert("It is still in pay process or if you want to change the wxid,please refresh the page and make sure you had not paid yet!");
-
-					}
-
-
-			});
+				});
+				
+			}
 
 		}
 
