@@ -65,6 +65,10 @@ app.controller('index',function($scope,$http,$sce){
 
 			if($scope.payStatus == "Unpaid"){
 
+				var url = 'http://www.fantaojie.com/us/paypal/res.php?wxid='+$scope.wxid;
+
+				var trustedUrl = $sce.trustAsResourceUrl(url);
+
 				$http.jsonp(trustedUrl,{jsonpCallbackParam:'callback'}).then(function(res){
 						
 
@@ -90,7 +94,7 @@ app.controller('index',function($scope,$http,$sce){
 
 
 				});
-				
+
 			}
 
 		}
