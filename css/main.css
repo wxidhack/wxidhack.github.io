@@ -46,3 +46,6 @@
 .tips-detail h4{
 	text-shadow:1px 1px 1px gray;font-weight:bold;
 }
+.my-height{
+	line-height:40px;
+}
